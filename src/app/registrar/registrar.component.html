@@ -1,0 +1,21 @@
+<div class="p-4">
+<form (ngSubmit)="guardarUser()">
+<div class="input-field">
+<input type="text" name="name" #name="ngModel" [(ngModel)] = "usuario.name">
+<label for="icon_prefix">Nombre</label>
+</div>
+<div class="input-field">
+<input type="email" name="email" #email="ngModel" [(ngModel)] = "usuario.email">
+<label for="icon_prefix">Correo electrónico</label>
+</div>
+	<div class="input-field">
+		<input type="password" name="password" #password="ngModel" [(ngModel)] = "usuario.password">
+		<label for="icon_prefix">Contraseña</label>
+	</div>
+	<div class="input-field">
+		<input type="password" name="password2" #password2="ngModel" [(ngModel)] = "usuario.password2">
+		<label for="icon_prefix">Contraseña de nuevo</label>
+	</div>
+<button type="submit" class="btn w-100">Registrarse</button>
+</form>
+</div>

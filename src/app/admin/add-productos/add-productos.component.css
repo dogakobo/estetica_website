@@ -1,0 +1,13 @@
+buscador {
+     display: flex;
+}
+
+.buscador .barra{
+     width: 400px;
+     margin: 20px;
+}
+
+.buscador .btn-barra{
+     height: 40px;
+     margin: 20px;
+}

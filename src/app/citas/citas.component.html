@@ -1,0 +1,23 @@
+<body class="brown lighten-5 pt-4 pb-4">
+     <div class="white container rounded z-depth-2">
+          <table class="table table-striped">
+               <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Servicio</th>
+                    <th scope="col">Teléfono</th>
+               </tr>
+               
+               <tr *ngFor="let cita of citas">
+                    <td>{{ cita.nombre }}</td>
+                    <td>{{ cita.usuario }}</td>
+                    <td>{{cita.fecha}}</td>
+                    <td>{{cita.hora}}</td>
+                    <td>{{cita.servicio}}</td>
+                    <td>{{cita.telefono}}</td>
+               </tr>
+          </table>
+     </div>
+</body>

@@ -1,0 +1,109 @@
+
+<body class="deep-orange lighten-5">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner w-100" style="height: 600px">
+    <div align="center" class="carousel-item active black" >
+      <img src="https://www.tintes-fantasia.es/upload/stcameraslideshow/bcdf5a33c34ecbd6e11de2efca2cd535.jpg" class="d-block img-fluid h-100" style="object-fit: cover">
+    </div>
+    <div class="carousel-item black" align="center">
+      <img src="https://belmed.com.bo/images/content/es/73_koleston-banner.jpg" class="d-block img-fluid h-100">
+    </div>
+    <div class="carousel-item black" align="center">
+      <img src="https://dm.henkel-dam.com/is/image/henkel/BANNER-PCC20?scl=1&fmt=png-alpha" class="d-block img-fluid h-100" style="object-fit: cover">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="">
+	<div class="row white border-bottom shadow-sm">
+		<div class="container">
+			<form>
+				<div class="input-field">
+					<form name="form" (ngSubmit)="buscar(busqueda)">
+					<i class="material-icons prefix">search</i>
+					
+          			<input id="icon_prefix" name="busqueda" #busquda="ngModel" type="text" class="form-control-bootstrap grey lighten-5 border border-2 rounded validate" placeholder="  Buscar" [(ngModel)]="busqueda">
+          			<input type="submit" name="" id="" hidden>
+          			</form>
+  				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-md-2">
+
+			<div class="card rounded z-depth-2">
+				<div class="grey lighten-3 border-bottom shadow-sm">
+				<p class="container lead mt-1"><strong>Marca</strong></p>
+				</div>
+				<div class="container m-2">
+					<p>
+					<label>
+		        			<input type="checkbox" (change)="listarMarca('Loreal paris')">
+		       				<span>L'oréal Paris</span>
+		      		</label>
+		      		</p>
+		      		<p>
+		      		<label>
+		        			<input type="checkbox" name="1" (change)="listarMarca('Wella')">
+		       				<span>Wella</span>
+		      		</label>
+		      		</p>
+		      		
+		      		<p>
+		      		<label>
+		        			<input type="checkbox" name="1" (change)="listarMarca('Palette')">
+		       				<span>Palette</span>
+		      		</label>
+		      		</p>
+		      		<p>
+		      		<label>
+		        			<input type="checkbox" name="1"  (change)="listarMarca('Garnier')">
+		       				<span>Garnier</span>
+		      		</label>
+		      		</p>
+		      	</div>
+			</div>		  
+		</div>
+		
+		<div class="col-md-10">
+			<div class="row">
+					<div class="col-md-4" *ngFor="let productos of productoService.Producto" >
+						<div class="card">
+							<div class="d-flex justify-content-center" style="height: 500px">
+							<img  src="http://localhost:3000/{{productos.imagen}}" class="img-fluid materialboxed" style="max-height: 100%; max-width: 100%">
+							</div>
+						
+							<div class="divider mb-3"></div>
+
+							<div style="max-height: 100px">
+								<p class="lead" align="center"><strong>$ {{productos.precio}}</strong></p>
+								<h5 align="center" class="d-flex justify-content-center">{{productos.nombre}}</h5>
+							</div>
+
+							<a (click)="addCart(productos)" class="waves-effect waves-light btn orange darken-1 m-2"><i class="material-icons left" routerLink="/Carrito">add_shopping_cart</i>Añadir al carrito</a>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+    <app-footer></app-footer>
+</footer>
+
+</body>

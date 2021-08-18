@@ -1,0 +1,43 @@
+<body class="brown lighten-5">
+	<div class="pt-4" style="padding-right: 10rem; padding-left: 10rem; height: 200px" >
+		<div class="white rounded border z-depth-2 mb-5" *ngFor="let pedido of this.pedidosService.Pedido">
+			<div class="row p-4 grey lighten-2 z-depth-2 rounded-top" >
+				<div class="col-3">
+					<p class="h4" style="color: #455a64"><strong>Folio: {{pedido._id}}</strong></p>
+				</div>
+				<div class="col-3">
+					<p class="h4" style="color: #455a64">Usuario: {{pedido.usuario}}</p>
+				</div>
+				<div class="col-6">
+					<p align="right" class="h4" style="color: #455a64">Total: ${{pedido.total}}</p>
+				</div>
+			</div>
+			<div class="pe-5 ps-5 me-5 ms-5">
+				<div class="row" >
+	              <table class="table table-borderless">
+	                <tr>
+	                  <th>Producto</th>
+	                  <th>Descripción</th>
+	                  <th>Cantidad</th>
+	                  <th>Subtotal</th>
+	                </tr>
+	                <tr *ngFor="let item of pedido.productos">
+	                  <td><img [src]="'http://localhost:3000/'+item.imagen" style="height: 100px"></td>
+	                  <td>{{item.nombre}}</td>
+	                  <td>{{item.cantidad}}</td>
+	                  <td>${{item.precio*item.cantidad}}</td>
+	                </tr>
+	              </table>
+	            </div>
+
+	            <div class="row mt-2">
+	            	<div class="grey lighten-3 rounded z-depth-2">
+	            		<p class="h4" style="color: #455a64"><strong>Dirección</strong></p>
+	            		<p class="lead" style="color: #455a64"><strong>{{pedido.domicilio.nombre}} {{pedido.domicilio.apellido}}</strong> {{pedido.domicilio.calle}}, {{pedido.domicilio.colonia}}, #{{pedido.domicilio.num_int}} | {{pedido.domicilio.num_ext}}, {{pedido.domicilio.municipio}} {{pedido.domicilio.estado}}, ({{pedido.domicilio.cp}})</p>
+	            	</div>
+	            </div>
+
+			</div>
+		</div>
+	</div>
+</body>

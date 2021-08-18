@@ -1,0 +1,39 @@
+<nav>
+    <div class="nav-wrapper pink accent-2 z-depth-2">
+	    <div class="container">
+            <div  align="right" style="position:absolute;margin-top: 1rem; margin-right: 2rem; left:84%;">
+            	<a *ngIf="this.iniciosesionServicio.usuario !=null" type="button" class="btn red" (click)="cerrarsesion()">Cerrar sesion</a>
+                    <a *ngIf="this.iniciosesionServicio.usuario ==null" type="button" data-bs-toggle="modal" data-bs-target="#iniciosesion" class="btn orange accent-4">Registrarse</a>
+					</div>
+	      <a href="#" class="brand-logo" routerLink="Inicio">Pathy's Esthetic</a>
+
+	      <ul id="nav-mobile" class="right hide-on-med-and-down menu">
+	        <li><a href="" routerLink="Inicio">Inicio</a></li>
+	        <li><a href="" routerLink="Catalogo">Catálogo</a></li>
+	        <li><a href="" routerLink="Nosotros" class="me-3">Nosotros</a></li>
+	        <li><a href="" routerLink="Carrito">Carrito</a>
+	        </li>
+	        <li *ngIf="this.iniciosesionServicio.usuario==null"><a data-bs-toggle="modal" data-bs-target="#iniciosesion">Ingresar</a></li>
+	        <li *ngIf="this.iniciosesionServicio.usuario!=null"><a>Hola! {{this.iniciosesionServicio.usuario}}</a></li>
+			<!-- <a type="button" class="btn red" routerLink="Perfil" *ngIf="this.iniciosesionServicio.usuario!=null">Mi perfil</a> -->
+	      </ul>
+		  
+	    </div>
+    </div>
+  </nav>
+
+
+<div class="modal fade" id="iniciosesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body grey lighten-5">
+      		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			<mat-tab-group mat-align-tabs="center">
+			  <mat-tab label="Entrar"><app-iniciosesion></app-iniciosesion></mat-tab>
+			  <mat-tab label="Registrarse"><app-registrar></app-registrar></mat-tab>
+			</mat-tab-group>
+      
+    </div>
+  </div>
+</div>
+</div>

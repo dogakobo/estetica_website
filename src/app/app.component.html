@@ -1,0 +1,39 @@
+<app-encabezado></app-encabezado>
+<app-menu-admin></app-menu-admin>
+<mat-menu #menu="matMenu">
+
+</mat-menu>
+
+<ul id="slide-out" class="sidenav blue-grey darken-3">
+	<div align="center">
+		<img class="w-50" src="../assets/img/encabezado/logo_estetica.png">
+		<p class="h2 text-white" >Pathy's Esthetic</p>
+		<p class="h4" style="color:#bdbdbd">Admin Panel</p>
+	</div>
+	<div class="mb-4"></div>
+	<li><a class="text-white" href="" routerLink="InicioPanel"><i class="material-icons text-white">dashboard</i>Inicio</a></li>
+ 	<li>
+ 	<div class="divider blue-grey darken-2" style="margin-top: -0rem"></div>
+	 	<ul class="collapsible text-white">
+		    <li>
+		      <div class="collapsible-header"><i class="material-icons">navigate_next</i>Productos</div>
+		      <div class="collapsible-body blue-grey darken-3"><button class="text-white" mat-menu-item routerLink="Productos">Consultar</button></div>
+		      <div class="collapsible-body blue-grey darken-3"><button class="text-white" mat-menu-item routerLink="AgregarProducto">Agregar</button></div>
+		    </li>
+			<li>
+				<div class="collapsible-header"><i class="material-icons">navigate_next</i>Clientes</div>
+				<div class="collapsible-body blue-grey darken-3"><button class="text-white" mat-menu-item routerLink="Clientes">Consultar</button></div>				
+			  </li>
+			  <li>
+				<div class="collapsible-header"><i class="material-icons">navigate_next</i>Citas</div>
+				<div class="collapsible-body blue-grey darken-3"><button class="text-white" mat-menu-item routerLink="Citas">Consultar</button></div>				
+			  </li>
+			  <li>
+				<div class="collapsible-header"><i class="material-icons">navigate_next</i>Pedidos</div>
+				<div class="collapsible-body blue-grey darken-3"><button class="text-white" mat-menu-item routerLink="Pedidos">Consultar</button></div>		
+			  </li>
+	  	</ul>
+	</li>
+</ul>
+
+<router-outlet></router-outlet>

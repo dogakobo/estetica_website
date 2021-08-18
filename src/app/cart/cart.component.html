@@ -1,0 +1,131 @@
+<body class="deep-orange lighten-5 p-5">
+  <div class="rounded white z-depth-2" style="margin-left: 10rem; margin-right: 10rem; min-height: 400px">
+      <div class="rounded-top shadow-sm grey lighten-4 border">
+        <p class="h3 p-3" style="color:#37474f">Carrito de compras</p>
+      </div>
+      <div style="margin:2rem">
+            <div class="row" *ngFor="let item of items">
+              <p class="h-3" align="right"><strong>Precio</strong></p>
+              <div class="divider"></div>
+              <div class="col-md-2">
+                <img [src]="'http://localhost:3000/'+item.imagen" style="height: 250px">
+              </div>
+              <div class="col-md-10 position-relative p-3">
+
+                <p class="position-absolute top-0 end-0 p-3 h4"><strong>$ {{item.precio}}</strong></p>
+                <p class="h2" style="color: #880e4f">{{item.nombre}}</p>
+                <p class="h2" style="color: #ad1457">{{item.descripcion}}</p>
+                <p class="h4" style="color:#455a64">Cantidad: {{item.cantidad}}</p><br><br>
+                <a type="button" (click)="remove(item)" class="#03a9f4">Eliminar</a>
+              </div>
+              <p class="h-3" align="right"><strong>Subtotal: ${{item.precio*item.cantidad}}</strong></p>
+              <div class="divider"></div>
+            </div>
+        <p class="h3" align="right"><strong>Total + $90 Envío: ${{totalPrice+100}}</strong></p>
+        <div class="p-5">
+          <button type="button" class="btn" (click)="mostrarform()" *ngIf="this.iniciosesionServicio.usuario!=null">Añadir dirección</button>
+          <cite *ngIf="this.iniciosesionServicio.usuario==null">Inicia sesión para realizar está compra</cite>
+        </div>
+        
+
+    <div class="row" *ngIf="form">
+      <p class="lead h3"><strong>Domicilio</strong></p>
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Nombre" type="text" class="validate" name="nombre" #nombre="ngModel" [(ngModel)]="domicilio.nombre">
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Apellido"  type="text" class="validate" name="apellido" #apellido="ngModel" [(ngModel)]="domicilio.apellido">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col-7">
+          <input placeholder="Calle" type="text" class="validate" name="calle" #calle="ngModel" [(ngModel)]="domicilio.calle">
+        </div>
+        <div class="input-field col-5">
+          <input placeholder="Colonia" type="text" class="validate" name="colonia" #colonia="ngModel" [(ngModel)]="domicilio.colonia">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col-4">
+          <input placeholder="Número interior" type="text" class="validate" name="num_int" #num_int="ngModel" [(ngModel)]="domicilio.num_int">
+        </div>
+        <div class="input-field col-4">
+          <input placeholder="Número exterior" type="text" class="validate" name="num_ext" #num_ext="ngModel" [(ngModel)]="domicilio.num_ext">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col-6">
+          <input placeholder="Municipio" type="text" class="validate" name="municipio" #municipio="ngModel" [(ngModel)]="domicilio.municipio">
+        </div>
+        <div class="input-field col-4">
+          <input placeholder="Estado" type="text" class="validate" name="estado" #estado="ngModel" [(ngModel)]="domicilio.estado">
+        </div>
+        <div class="input-field col-2">
+          <input placeholder="Código postal" type="text" class="validate" name="cp" #cp="ngModel" [(ngModel)]="domicilio.cp">
+        </div>
+      </div>
+      <input type="submit" class="btn" value="Realizar compra" data-bs-toggle="modal" data-bs-target="#editModal">
+    </form>
+  </div>
+
+
+        
+</div>
+  </div>
+
+ <!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content deep-orange lighten-5">
+
+
+      <div class="modal-header white z-depth-1">
+        <h5 class="modal-title" id="exampleModalLabel">Verifica tus datos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+      <div class="row">
+        <div class="input-field col-4">
+          <p class="lead"><strong>{{domicilio.nombre}} {{domicilio.apellido}}</strong></p>
+          <p class="lead">{{domicilio.calle}}, {{domicilio.colonia}}, #{{domicilio.num_int}} | {{domicilio.num_ext}}</p>
+          <p class="lead">{{domicilio.municipio}} {{domicilio.estado}}, ({{domicilio.cp}})</p>
+        </div>
+        <div class="input-field col-8">
+          <div class="white rounded border shadow-sm">
+            <div class="row" >
+              <table class="table table-borderless">
+                <tr>
+                  <th>Producto</th>
+                  <th>Descripción</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                </tr>
+                <tr *ngFor="let item of items">
+                  <td><img [src]="'http://localhost:3000/'+item.imagen" style="height: 100px"></td>
+                  <td>{{item.nombre}}</td>
+                  <td>{{item.cantidad}}</td>
+                  <td>${{item.precio}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+        
+
+      </div>
+      <div class="modal-footer white z-depth-3">
+        <div id="checkout"></div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+  
+</body>

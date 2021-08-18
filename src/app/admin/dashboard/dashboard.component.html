@@ -1,0 +1,108 @@
+<body class="brown lighten-5 pt-4 pb-4">
+	<div class="row pt-4" style="padding-right: 10rem; padding-left: 10rem; height: 170px">
+		<div class="col-md-3 position-relative">
+			<div class="position-absolute top-50 start-50 translate-middle d-flex justify-content-center" >
+				<div class="spinner-border text-primary" role="status" *ngIf="cargando" style="width: 6rem; height: 6rem;"></div>
+		 	</div>
+			<div class="green rounded z-depth-2 p-3 text-white position-relative" *ngIf="cargando==false">
+				<i class="material-icons large position-absolute top-50 end-0 translate-middle-y p-3" style="bottom:-83px;color:#43a047">attach_money</i>
+				<p class="h1">${{gananciasMes}}</p>
+				<p class="lead">En ventas este mes</p>
+				<div class="green darken-1 rounded-bottom" style="margin-right: -1rem; margin-left: -1rem; margin-bottom: -2rem">
+					<a class="text-white" href="" routerLink="/InicioPanel"><p class="lead p-2" align="center"><i class="material-icons right">arrow_forward</i>Ver detalladamente</p></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 position-relative">
+			<div class="position-absolute top-50 start-50 translate-middle d-flex justify-content-center" >
+				<div class="spinner-border text-primary" role="status" *ngIf="cargando" style="width: 6rem; height: 6rem;"></div>
+		 	</div>
+			<div class="pink darken-1 rounded z-depth-2 p-3 text-white position-relative" *ngIf="cargando==false">
+				<div class="spinner-border text-primary" role="status" *ngIf="cargando" style="width: 6rem; height: 6rem;"></div>
+				<i class="material-icons large position-absolute top-50 end-0 translate-middle-y p-3" style="bottom:-83px;color:#c2185b ">shopping_basket</i>
+				<p class="h1">{{pedidosMes}}</p>
+				<p class="lead">Nuevos pedidos</p>
+				<div class="pink darken-2 rounded-bottom" style="margin-right: -1rem; margin-left: -1rem; margin-bottom: -2rem">
+					<a class="text-white" href="" routerLink="/InicioPanel"><p class="lead p-2" align="center"><i class="material-icons right">arrow_forward</i>Ver detalladamente</p></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 position-relative">
+			<div class="position-absolute top-50 start-50 translate-middle d-flex justify-content-center" >
+				<div class="spinner-border text-primary" role="status" *ngIf="cargando" style="width: 6rem; height: 6rem;"></div>
+		 	</div>
+			<div class="cyan darken-2 rounded z-depth-2 p-3 text-white position-relative" *ngIf="cargando==false">
+				<i class="material-icons large position-absolute top-50 end-0 translate-middle-y p-3" style="bottom:-83px;color:#00838f">person_add</i>
+				<p class="h1">{{usuariosTotal}}<sup style="font-size:20px; color: #e0e0e0">+{{usuariosNews}} hoy</sup></p>
+				<p class="lead">Usuarios registrados</p>
+				<div class="cyan darken-3 rounded-bottom" style="margin-right: -1rem; margin-left: -1rem; margin-bottom: -2rem">
+					<a class="text-white" href="" routerLink="/Citas"><p class="lead p-2" align="center"><i class="material-icons right">arrow_forward</i>Ver detalladamente</p></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 position-relative">
+			<div class="position-absolute top-50 start-50 translate-middle d-flex justify-content-center">
+				<div class="spinner-border text-primary" role="status" *ngIf="cargando" style="width: 6rem; height: 6rem;"></div>
+		 	</div>
+			<div class="yellow darken-3 rounded z-depth-2 p-3 text-white position-relative" *ngIf="cargando==false">
+				<i class="material-icons large position-absolute top-50 end-0 translate-middle-y p-3" style="bottom:-83px;color:#f57f17">date_range</i>
+				<p class="h1">{{citasHoy}}</p>
+				<p class="lead">Citas para hoy</p>
+				<div class="yellow darken-4 rounded-bottom" style="margin-right: -1rem; margin-left: -1rem; margin-bottom: -2rem">
+					<a class="text-white" href="" routerLink="/Citas"><p class="lead p-2" align="center"><i class="material-icons right">arrow_forward</i>Ver detalladamente</p></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="padding-right: 10rem; padding-left: 10rem">
+		<div class="col-md-8">
+			<div class="red lighten-5 rounded z-depth-2 p-3 overflow-auto contenedor" style="height:400px">
+				<div class=" mb-1"><p class="h5" style="color:#455a64">Ventas último mes</p></div>
+				<chart [type]="typeVentas" [data]="dataVentas" 
+		    [options]="optionsVentas" style="width:100%;height:90%"></chart>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="red lighten-5 rounded z-depth-2 p-3" style="height:400px">
+				<div class="p-3 mb-1" style="margin:-1rem"> <p class="h5" style="color:#455a64">Tus citas de hoy</p></div>
+				<chart [type]="typeCitas" [data]="dataCitas" [options]="optionsCitas" style="position: relative; right:15%;bottom:5%;  height:130%; width: 130%"></chart>
+			</div>
+		</div>
+  	</div>
+
+  	<div class="row" style="padding-right: 10rem; padding-left: 10rem">
+		<div class="col-md-6">
+			<div class="rounded z-depth-2 p-3 overflow-auto blue-grey lighten-5 contenedor" style="height:400px">
+				<div class=" pb-1"><p class="h5">Últimos pedidos</p></div>
+                  <table class="table" bordercolor="#cfd8dc">
+                    <thead>
+                    <tr class="" style="border-color: #cfd8dc">
+                      <th>Folio</th>
+                      <th>Cliente</th>
+                      <th>Hora</th>
+                      <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngFor="let pedido of this.pedidosService.Pedido">
+                    <tr class="p-2" style="border-color: #cfd8dc">
+                      <td >{{pedido._id}}</td>
+                      <td>
+                        <div class="sparkbar " data-color="#00a65a" data-height="20">{{pedido.usuario}}</div>
+                      </td>
+                      <td class="">{{pedido.hora}}</td>
+                      <td><span class="badge">${{pedido.total}}</span></td>
+                    </tr>
+                    </tbody>
+                  </table>
+			</div>
+			
+		</div>
+		<div class="col-md-6">
+			<div class="cyan darken-1 text-white rounded z-depth-2 p-3" style="height:400px">
+				<div class="cyan darken-1 text-white pb-1"><p class="h5" >Usuarios registrados</p></div>
+				<chart [type]="type" [data]="data" [options]="options" style="width:100%;height:92%"></chart>
+			</div>
+		</div>
+  	</div>
+</body>

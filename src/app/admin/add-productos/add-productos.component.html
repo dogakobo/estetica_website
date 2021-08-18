@@ -1,0 +1,66 @@
+ <body class="brown lighten-5" style="height: 100%">
+<div class="ps-4 pe-4">
+<form name="form" #prodForm="ngForm" (ngSubmit)="aniadirProducto(prodForm)">
+  <div class="row" style="padding-top: 100px">
+    <div class="col-md-4">
+      <div class="grey lighten-5 border position-relative z-depth-2" >
+          <div class="d-flex justify-content-center" style="height: 600px">
+            <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput required>
+            <img class="align-self-center img-fluid" [src]="photoSelected || '../../../assets/img/no_img.jpg'" style="max-height: 100%; max-width: 100%">
+            <a type="button" class="position-absolute btn bottom-0 start-0 m-3" (click)="photoInput.click()">Seleccionar imagen</a>
+          </div>
+        </div>
+    </div>
+      <div class="col-md-8">
+        <div class="white pt-4 ps-4 pe-4 pb-3 z-depth-2 border rounded" style="height: 600px">
+          <div class="position-relative">
+    	     <p class="lead p-4" style="color:#616161"><strong>Código: {{maxid}}</strong></p>
+          <div class="row position-relative" style="padding-top: 100px; bottom: 80px">
+        	      <div class="input-field col s6">
+                  <mat-icon class="prefix">bubble_chart</mat-icon>
+        	        <label for="nombreProducto">Nombre</label>
+        	        <input type="text" name="nombre" class="form-control" 
+        	          autocomplete="off"  #nombre="ngModel" class="form-control"[(ngModel)]="productoService.definirProducto.nombre">
+        	      </div>
+        	      <div class="input-field col s6">
+        	      	<mat-icon class="prefix">label</mat-icon>
+        	        <label for="precio">Marca</label>
+        	        <input type="text" name="marca" class="form-control" #marca="ngModel" [(ngModel)]="productoService.definirProducto.marca">
+        	      </div>
+              </div>
+              <div class="input-field ms-2 position-relative" style="bottom: 50px">
+              	<mat-icon class="prefix">description</mat-icon>
+                <label for="precio">Descripción</label>
+                <input type="text"name="descripcion" class="form-control" #descripcion="ngModel" [(ngModel)]="productoService.definirProducto.descripcion">
+              </div>
+              <div class="row position-relative pb-4" style="bottom: 20px">
+        	      <div class="input-field col s6">
+        	      	<i class="material-icons prefix">local_offer</i>
+        	        <label for="precio">Precio</label>
+        	        <input type="number" name="precio" class="form-control" #precio="ngModel" [(ngModel)]="productoService.definirProducto.precio">
+        	      </div>
+        	      <div class="input-field col s6">
+                  <mat-icon class="prefix">filter_9_plus</mat-icon>
+        	        <label for="precio">Cantidad</label>
+        	        <input type="number" name="existencia" class="form-control" #existencia="ngModel" [(ngModel)]="productoService.definirProducto.existencia">
+        	      </div>
+        	  </div>
+              <div class="input-field pt-4 mt-4">
+                <div class="switch position-absolute bottom-0 end-0">
+                      <label >
+                        Mostrar
+                        <input type="checkbox" name="visible" #visible="ngModel" [(ngModel)]="productoService.definirProducto.visible">
+                        <span class="lever"></span>
+                      </label>
+                    </div>
+                </div>
+              <div class="form-group position-relative mt-5">
+                <button type="submit" class="btn btn-success position-absolute bottom-0 start-0"><i class="material-icons left">add</i>Añadir producto</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+</body>

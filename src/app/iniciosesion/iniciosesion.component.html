@@ -1,0 +1,12 @@
+<app-menu-admin></app-menu-admin>
+<div class="p-4">
+<form>
+<div class="input-field">
+	<input type="email" name="email" #name="ngModel" [(ngModel)]="usuario.email" class="validate">
+	<label for="icon_prefix">Correo electrónico</label>
+</div><br>
+<div class="input-field" >
+    <input type="password" name="password" #password="ngModel" [(ngModel)]="usuario.password" >
+    <label for="icon_prefix">Contraseña</label>
+</div>
+   <input type="button" value="Entrar" (click)="login()" style="width: 100%" class="btn">

@@ -1,0 +1,126 @@
+<body class="brown lighten-5 pt-4 pb-4">
+<div class="container">
+  <form (ngSubmit)="buscar(busqueda)">
+      <div class="input-field" style="margin-right: 4rem; margin-left: 4rem">
+        <i class="material-icons prefix">search</i>
+        <input type="text" class="form-control-bootstrap grey lighten-5 border border-2 rounded validate" placeholder="   Buscar productos" [(ngModel)]="busqueda" name="busqueda" #busquda="ngModel">
+        <input type="submit" name="" id="" hidden>
+      </div>
+    </form>
+  <div class="row border rounded z-depth-2 white" *ngFor="let productos of productoService.Producto">
+      <div class="col-md-3 rounded border-end d-flex justify-content-center">
+          <img src="http://localhost:3000/{{productos.imagen}}" height="300px">
+      </div>
+      <div class="col-md-9 position-relative blue-grey lighten-5">
+
+        <div class="position-absolute top-0 end-0 ">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button data-bs-toggle="modal" data-bs-target="#editModal" mat-menu-item (click)="editProducto(productos)">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button mat-menu-item (click)="deleteProducto(productos._id)">
+              <mat-icon>delete</mat-icon>
+              <span >Eliminar</span>
+            </button>
+          </mat-menu>
+        </div>
+        <div class="m-4" style="color: #546e7a">
+          <h4 class="lead"><strong>ID: {{productos._id}}</strong></h4>
+          <p class="lead"><strong>Nombre: </strong>{{productos.nombre}}</p>
+          <p class="lead"><strong>Descripción: </strong>{{productos.descripcion}}</p>
+          <p class="lead"><strong>Precio: </strong> ${{productos.precio}}</p>
+          <br><br>
+          <p class="lead"><strong>Quedan: </strong> {{productos.existencia}}</p>
+
+           <div class="switch m-4 position-absolute bottom-0 end-0">
+              <label>
+                Mostrar
+                <div *ngIf="productos.visible; then verdadero else falso"></div>
+                <ng-template #verdadero><input type="checkbox" checked (click)="MSwitch(productos)"></ng-template>
+                <ng-template #falso><input type="checkbox" (click)="MSwitch(productos)"></ng-template>
+                <span class="lever"></span>
+              </label>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+</body>
+
+  <!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content brown lighten-5">
+
+
+      <form name="form" #prodForm="ngForm" (ngSubmit)="putProducto(prodForm)">
+      <div class="modal-header white z-depth-1">
+        <h5 class="modal-title" id="exampleModalLabel">Editar producto ID: {{productoService.definirProducto._id}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+      
+        <div class="row">
+          <div class="grey lighten-5 border position-relative z-depth-2 rounded-top" >
+              <div class="d-flex justify-content-center" style="height: 250px">
+                <input type="text" name="_id" #_id="ngModel" [(ngModel)]="productoService.definirProducto._id" hidden>
+                <input type="file" class="d-none" (change)="onPhotoSelected($event)" name="imagen" #imagen="ngModel" [(ngModel)]="productoService.definirProducto.imagen" #photoInput required>
+                <img class="align-self-center img-fluid" 
+                [src]="photoSelected || 'http://localhost:3000/' + productoService.definirProducto.imagen" 
+                style="max-height: 100%; max-width: 100%">
+                <a type="button" class="position-absolute btn bottom-0 start-0 m-3" (click)="photoInput.click()">Seleccionar imagen</a>
+              </div>
+            </div>
+        </div>
+          <div class="row">
+            <div class="white pt-4 ps-4 pe-4 pb-3 z-depth-2 border rounded-bottom" style="height: 400px">
+              <div class="position-relative">
+              <div class="row position-relative" style="padding-top: 80px; bottom: 80px">
+                    <div class="input-field col s6">
+                      <mat-icon class="prefix">bubble_chart</mat-icon>
+                      <input type="text" name="nombre" class="form-control" 
+                        autocomplete="off"  #nombre="ngModel" class="form-control" [(ngModel)]="productoService.definirProducto.nombre">
+                    </div>
+                    <div class="input-field col s6">
+                      <mat-icon class="prefix">label</mat-icon>
+                      <input type="text" name="marca" class="form-control" #marca="ngModel" [(ngModel)]="productoService.definirProducto.marca">
+                    </div>
+                  </div>
+                  <div class="input-field ms-2 position-relative" style="bottom: 50px">
+                    <mat-icon class="prefix">description</mat-icon>
+                    <input type="text"name="descripcion" class="form-control" #descripcion="ngModel" [(ngModel)]="productoService.definirProducto.descripcion">
+                  </div>
+                  <div class="row position-relative pb-4" style="bottom: 20px">
+                    <div class="input-field col s6">
+                      <i class="material-icons prefix">local_offer</i>
+                      <input type="number" name="precio" class="form-control" #precio="ngModel" [(ngModel)]="productoService.definirProducto.precio">
+                    </div>
+                    <div class="input-field col s6">
+                      <mat-icon class="prefix">filter_9_plus</mat-icon>
+                      <input type="number" name="existencia" class="form-control" #existencia="ngModel" [(ngModel)]="productoService.definirProducto.existencia">
+                      <input type="checkbox" name="visible" #visible="ngModel" [(ngModel)]="productoService.definirProducto.visible">
+                    </div>
+                </div>
+                </div>
+            </div>
+          </div>
+        
+
+
+      </div>
+      <div class="modal-footer white z-depth-3" style="margin-bottom: -30px">
+        <button type="submit" class="btn btn-success green darken-1s" (click)="dimiss.click()"><i class="material-icons right">check</i>Actualizar producto</button>
+        <button hidden #dimiss data-bs-dismiss="modal"></button>
+      </div>
+    </form>
+
+
+
+    </div>
+  </div>
+</div>
