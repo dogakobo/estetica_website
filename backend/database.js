@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
-const URI = "";
+const URI = "mongodb+srv://archie:1234@cluster0.symhl.mongodb.net/estetica";
 
 module.exports ={
    PORT:  process.env.PORT || 3000,
-   DB: ''
+   DB: 'mongodb+srv://archie:1234@cluster0.symhl.mongodb.net/estetica'
 }
 
 
-mongoose.connect(URI)
+mongoose.connect(URI,  {useNewUrlParser: true})
 	.then(db  => console.log("Base de datos conectada"))
 	.catch(err => console.errror(err));
 

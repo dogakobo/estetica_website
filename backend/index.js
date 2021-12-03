@@ -25,6 +25,42 @@ app.use(cors());
 app.use(router);
 //Settings
 app.set("port", process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname + '/../dist/ProyectoEstetica')));
+
+app.get('/Inicio', (req,res) =>{
+    res.sendFile(path.join(__dirname + '/../dist/ProyectoEstetica/index.html'));
+});
+app.get('/Catalogo', (req,res) =>{
+    res.sendFile(path.join(__dirname + '/../dist/ProyectoEstetica/index.html'));
+});
+
+app.get('/Nosotros', (req,res) =>{
+    res.sendFile(path.join(__dirname + '/../dist/ProyectoEstetica/index.html'));
+});
+
+app.get('/Carrito', (req,res) =>{
+    res.sendFile(path.join(__dirname + '/../dist/ProyectoEstetica/index.html'));
+});
+
+app.get('/Clientes', (req,res) =>{
+    res.sendFile(path.join(__dirname + '/../dist/ProyectoEstetica/index.html'));
+});
+
+app.get('/InicioPanel', (req,res) =>{
+    res.sendFile(path.join(__dirname + '/../dist/ProyectoEstetica/index.html'));
+});
+
+app.get('/Citas', (req,res) =>{
+    res.sendFile(path.join(__dirname + '/../dist/ProyectoEstetica/index.html'));
+});
+
+app.get('/Pedidos', (req,res) =>{
+    res.sendFile(path.join(__dirname + '/../dist/ProyectoEstetica/index.html'));
+});
+
+app.get('/Productos', (req,res) =>{
+    res.sendFile(path.join(__dirname + '/../dist/ProyectoEstetica/index.html'));
+});
 
 //Middlewares
 app.use(morgan("dev"));

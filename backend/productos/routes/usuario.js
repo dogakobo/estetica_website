@@ -6,6 +6,7 @@ const JWT = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const User = require('../models/usuariomodels');
 const moment = require ('moment');
+const Cliente = require('../models/Cliente');
 
 
 router.post('/', [
@@ -90,6 +91,35 @@ router.post('/', [
 }else{
   res.json({error: true})
 }*/
+
+router.get('/', async (req, res) => {
+  const usuarios = await usuario.find();
+  res.status(200).send(usuario);
+  });
+  //consulta especifica de nombre
+router.post('/buscar-cli-nom', async (req, res) =>{
+  const usuario = await usuario.find({nombre: req.body.nombre});
+  if(!usuario)
+  return res.status(404).send(false);
+  
+  res.status(200).send(usuario);
+});
+
+router.post('/', async (req, res) =>{
+  
+  const {nombre, apellido, telefono, correo, nomUsuario} = req.body;
+
+  const newUsuario = new Usuario({
+      nombre,
+      apellido,
+      telefono,
+      correo,
+      nomUsuario
+ });
+
+ await newUsuario.save();
+ res.status(201).send(newUsuario);
+});
 
 
 
