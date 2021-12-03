@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CitasSevicioService {
-  private UrlCita = 'http://localhost:3000/api/cita'
+  private UrlCita = 'https://pathyssthetic.herokuapp.com/api/cita'
 
   constructor(private http: HttpClient) { }
 

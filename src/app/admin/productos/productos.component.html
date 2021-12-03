@@ -9,7 +9,7 @@
     </form>
   <div class="row border rounded z-depth-2 white" *ngFor="let productos of productoService.Producto">
       <div class="col-md-3 rounded border-end d-flex justify-content-center">
-          <img src="http://localhost:3000/{{productos.imagen}}" height="300px">
+          <img src="https://pathyssthetic.herokuapp.com/{{productos.imagen}}" height="300px">
       </div>
       <div class="col-md-9 position-relative blue-grey lighten-5">
 
@@ -71,7 +71,7 @@
                 <input type="text" name="_id" #_id="ngModel" [(ngModel)]="productoService.definirProducto._id" hidden>
                 <input type="file" class="d-none" (change)="onPhotoSelected($event)" name="imagen" #imagen="ngModel" [(ngModel)]="productoService.definirProducto.imagen" #photoInput required>
                 <img class="align-self-center img-fluid" 
-                [src]="photoSelected || 'http://localhost:3000/' + productoService.definirProducto.imagen" 
+                [src]="photoSelected || 'https://pathyssthetic.herokuapp.com/' + productoService.definirProducto.imagen" 
                 style="max-height: 100%; max-width: 100%">
                 <a type="button" class="position-absolute btn bottom-0 start-0 m-3" (click)="photoInput.click()">Seleccionar imagen</a>
               </div>

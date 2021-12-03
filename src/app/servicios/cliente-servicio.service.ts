@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class ClienteServicioService {
-  private UrlClien = 'http://localhost:3000/api/cliente'
+  private UrlClien = 'https://pathyssthetic.herokuapp.com/api/cliente'
 
   constructor(private http: HttpClient){ }
 

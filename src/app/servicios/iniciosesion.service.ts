@@ -9,7 +9,7 @@ import { Usuario } from '../../../backend/productos/models/usuario';
 export class IniciosesionService {
   usuario: any;
   tipo:any;
-  private url = "http://localhost:3000/api/iniciosesion/"
+  private url = "https://pathyssthetic.herokuapp.com/api/iniciosesion/"
 
   constructor(private http:HttpClient , private Router: Router) { }
 

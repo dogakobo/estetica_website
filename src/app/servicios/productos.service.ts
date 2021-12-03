@@ -11,7 +11,7 @@ export class ProductosService {
 
   definirProducto: Productos;
   Producto: any[] = []; 
-  readonly URL = "http://localhost:3000/api/producto/";
+  readonly URL = "https://pathyssthetic.herokuapp.com/api/producto/";
 
   constructor(private http: HttpClient) {
     this.definirProducto = new Productos();

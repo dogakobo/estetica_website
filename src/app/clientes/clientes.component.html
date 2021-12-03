@@ -15,11 +15,11 @@
                     <th scope="col">Usuario</th>
                </tr>
                
-               <tr *ngFor="let cliente of clientes">
-                    <td>{{ cliente.nombre }} {{cliente.apellido}}</td>
-                    <td>{{ cliente.telefono }}</td>
-                    <td>{{cliente.correo}}</td>
-                    <td>{{cliente.nomUsuario}}</td>
+               <tr *ngFor="let clientes of clientes">
+                    <td>{{ clientes.nombre }} {{clientes.apellido}}</td>
+                    <td>{{ clientes.telefono }}</td>
+                    <td>{{clientes.correo}}</td>
+                    <td>{{clientes.nomUsuario}}</td>
                </tr>
           </table>
      </div>

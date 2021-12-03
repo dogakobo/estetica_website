@@ -22,7 +22,7 @@
 	                  <th>Subtotal</th>
 	                </tr>
 	                <tr *ngFor="let item of pedido.productos">
-	                  <td><img [src]="'http://localhost:3000/'+item.imagen" style="height: 100px"></td>
+	                  <td><img [src]="'https://pathyssthetic.herokuapp.com/'+item.imagen" style="height: 100px"></td>
 	                  <td>{{item.nombre}}</td>
 	                  <td>{{item.cantidad}}</td>
 	                  <td>${{item.precio*item.cantidad}}</td>

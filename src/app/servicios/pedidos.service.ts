@@ -10,7 +10,7 @@ import { CarritoComponent } from '.././cart/cart.component';
 })
 export class PedidosService {
 	Pedido: Pedidos[]=[];
-	readonly URL = "http://localhost:3000/api/pedidos/";
+	readonly URL = "https://pathyssthetic.herokuapp.com/api/pedidos/";
 
   constructor(private http: HttpClient) { }
 

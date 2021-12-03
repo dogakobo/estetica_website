@@ -28,7 +28,7 @@ export class IniciosesionComponent implements OnInit {
       localStorage.setItem('email',res.email);
       localStorage.setItem('tipo',res.tipo);
       if(res.tipo=="adm"){
-        window.location.href=("http://localhost:4200/InicioPanel")
+        window.location.href=("https://pathyssthetic.herokuapp.com/InicioPanel")
       }else{
         this.Router.navigate(['/Inicio'])
         location.reload();

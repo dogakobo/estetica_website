@@ -14,7 +14,7 @@
 	        <li><a href="" routerLink="Carrito">Carrito</a>
 	        </li>
 	        <li *ngIf="this.iniciosesionServicio.usuario==null"><a data-bs-toggle="modal" data-bs-target="#iniciosesion">Ingresar</a></li>
-	        <li *ngIf="this.iniciosesionServicio.usuario!=null"><a>Hola! {{this.iniciosesionServicio.usuario}}</a></li>
+	        <li *ngIf="this.iniciosesionServicio.usuario!=null"><a routerLink="Perfil">Hola! {{this.iniciosesionServicio.usuario}}</a></li>
 			<!-- <a type="button" class="btn red" routerLink="Perfil" *ngIf="this.iniciosesionServicio.usuario!=null">Mi perfil</a> -->
 	      </ul>
 		  

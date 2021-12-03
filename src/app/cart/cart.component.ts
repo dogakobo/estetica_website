@@ -7,6 +7,7 @@ import { Item } from '../interface/item';
 import { Domicilio } from '../interface/domicilio';
 import { PedidosService } from '.././servicios/pedidos.service';
 import {IniciosesionService} from '../servicios/iniciosesion.service';
+import { Pedidos } from 'backend/productos/models/pedidos-modelo';
 declare var paypal:any;
 declare var M: any;
 
@@ -118,4 +119,5 @@ export class CarritoComponent implements AfterViewChecked {
   {
       this._cartService.removeElementCart(producto);
   }
+
 }
